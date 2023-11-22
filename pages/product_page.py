@@ -8,16 +8,16 @@ class ProductPage(BasePage):
 
     def product_in_basket(self):
         assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME), ("Product name is not presented")
-        assert self.is_element_present(*ProductPageLocators.MESSAGE_ABOUT_ADDING), ("Message about adding is not presented")
+        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE), ("Message about adding is not presented")
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
-        message = self.browser.find_element(*ProductPageLocators.MESSAGE_ABOUT_ADDING).text
+        product_in_message = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE).text
 
-        assert product_name in message, "Product name is different"
+        assert product_name == product_in_message, "Product name is different"
 
-    def should_be_message_basket_total(self):
-        assert self.is_element_present(*ProductPageLocators.MESSAGE_BASKET_TOTAL), ("Message basket total is not presented")
+    def product_price_in_basket(self):
+        assert self.is_element_present(*ProductPageLocators.TOTAL_PRICE_IN_MESSAGE), ("Message basket total is not presented")
         assert self.is_element_present(*ProductPageLocators.PRODUCT_PRICE), ("Product price is not presented")
-        message_basket_total = self.browser.find_element(*ProductPageLocators.MESSAGE_BASKET_TOTAL).text
+        product_price_in_message = self.browser.find_element(*ProductPageLocators.TOTAL_PRICE_IN_MESSAGE).text
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
 
-        assert product_price in message_basket_total, "Product price is different"
+        assert product_price_in_message == product_price, "Product price is different"
