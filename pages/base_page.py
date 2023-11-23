@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from .locators import BasePageLocators
+from .locators import MainPageLocators
 import math
 import time
 
@@ -31,7 +32,6 @@ class BasePage():
                 until_not(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return False
-
         return True
 
     def is_element_present(self, how, what):
@@ -46,7 +46,6 @@ class BasePage():
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return True
-
         return False
 
     def open(self):
@@ -71,3 +70,11 @@ class BasePage():
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    def transit_to_basket(self):
+        basket_button = self.browser.find_element(*MainPageLocators.TRANSITION_TO_BASKET_BUTTON)
+        basket_button.click()
+
+    def should_be_basket_button(self):
+        assert self.is_element_present(*MainPageLocators.TRANSITION_TO_BASKET_BUTTON), \
+            "Basket button is not presented"
