@@ -15,4 +15,5 @@ class ProductPageLocators():
     PRODUCT_NAME = (By.XPATH, "//li[@class='active']")
     TOTAL_PRICE_IN_MESSAGE = (By.CSS_SELECTOR, ".alert-info .alertinner strong")
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".alert-success")
 
