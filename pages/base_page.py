@@ -20,7 +20,6 @@ class BasePage():
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
-        #self.browser.implicitly_wait(timeout)
 
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
@@ -61,7 +60,6 @@ class BasePage():
         answer = str(math.log(abs((12 * math.sin(float(x))))))
         alert.send_keys(answer)
         time.sleep(1)
-        #alert.accept()
         WebDriverWait(self.browser, 10).until(EC.alert_is_present())
         try:
             alert = self.browser.switch_to.alert

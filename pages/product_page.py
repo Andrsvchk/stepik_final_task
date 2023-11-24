@@ -7,8 +7,10 @@ class ProductPage(BasePage):
         button_add_to_basket.click()
 
     def product_in_basket(self):
-        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME), ("Product name is not presented")
-        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE), ("Message about adding is not presented")
+        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME), \
+            ("Product name is not presented")
+        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE),\
+            ("Message about adding is not presented")
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         product_in_message = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_MESSAGE).text
 
@@ -17,7 +19,8 @@ class ProductPage(BasePage):
     def product_price_in_basket(self):
         assert self.is_element_present(*ProductPageLocators.TOTAL_PRICE_IN_MESSAGE), \
             ("Message basket total is not presented")
-        assert self.is_element_present(*ProductPageLocators.PRODUCT_PRICE), ("Product price is not presented")
+        assert self.is_element_present(*ProductPageLocators.PRODUCT_PRICE), \
+            ("Product price is not presented")
         product_price_in_message = self.browser.find_element(*ProductPageLocators.TOTAL_PRICE_IN_MESSAGE).text
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
 

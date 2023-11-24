@@ -1,7 +1,6 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
-import faker
-import time
+
 
 class LoginPage(BasePage):
     def register_new_user(self, email, password):
